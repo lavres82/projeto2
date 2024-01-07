@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" />
+
+    <title>Projeto 2</title>
+</head>
+<body>
+
+<script>
+    function limparResposta(item) {
+        document.getElementById(item + "_resposta").innerHTML = "";
+        document.getElementById(item).value = "";
+    }
+
+    //Questão 1
+    function verificarParOuImpar() {
+        var numero = parseInt(document.getElementById("numero1").value);
+        var resposta = "Resposta: ";
+        if (numero % 2 === 0) {
+            resposta += "O número é par.";
+        } else {
+            resposta += "O número é ímpar.";
+        }
+        document.getElementById("numero1_resposta").innerHTML = resposta;
+    }
+
+    // Questão 2
+    function verificarMaior() {
+        var num1 = parseInt(document.getElementById("numero2a").value);
+        var num2 = parseInt(document.getElementById("numero2b").value);
+        var resposta = "Resposta: ";
+        if (num1 > num2) {
+            resposta += "O primeiro número é maior.";
+        } else if (num2 > num1) {
+            resposta += "O segundo número é maior.";
+        } else {
+            resposta += "Os números são iguais.";
+        }
+        document.getElementById("numero2_resposta").innerHTML = resposta;
+    }
+
+    // Questão 3
+    function verificarVotacao() {
+        var anoNascimento = parseInt(document.getElementById("anoNascimento").value);
+        var anoAtual = new Date().getFullYear();
+        var resposta = "Resposta: ";
+        if (anoAtual - anoNascimento >= 18) {
+            resposta += "Pode votar este ano.";
+        } else {
+            resposta += "Não pode votar este ano.";
+        }
+        document.getElementById("anoNascimento_resposta").innerHTML = resposta;
+    }
+
+    // Questão 4
+    function calcularNovoSalario() {
+        var salarioAtual = parseFloat(document.getElementById("salarioAtual").value);
+        var percentualReajuste = parseFloat(document.getElementById("percentualReajuste").value);
+        var novoSalario = salarioAtual + (salarioAtual * (percentualReajuste / 100));
+        var resposta = "Resposta: O novo salário é " + novoSalario.toFixed(2);
+        document.getElementById("salarioAtual_resposta").innerHTML = resposta;
+    }
+
+    // Questão 5
+    function diaDaSemana() {
+        var numeroDia = parseInt(document.getElementById("numeroDia").value);
+        var diasSemana = ["Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado"];
+        var resposta = "Resposta: ";
+        if (numeroDia >= 1 && numeroDia <= 7) {
+            resposta += "O dia da semana é " + diasSemana[numeroDia - 1];
+        } else {
+            resposta += "Número inválido. Digite um número de 1 a 7.";
+        }
+        document.getElementById("numeroDia_resposta").innerHTML = resposta;
+    }
+
+    // Questão 6
+    function numerosAteValor() {
+        var valor = parseInt(document.getElementById("valorNumerosAte").value);
+        var resposta = "Resposta: ";
+        for (var i = 1; i <= valor; i++) {
+            resposta += i + " ";
+        }
+        document.getElementById("valorNumerosAte_resposta").innerHTML = resposta;
+    }
+
+    // Questão 7
+    function somaNumerosMenores() {
+        var valor = parseInt(document.getElementById("valorSomaMenores").value);
+        var soma = 0;
+        var resposta = "Resposta: ";
+        for (var i = 1; i < valor; i++) {
+            soma += i;
+        }
+        resposta += "A soma dos números menores que " + valor + " é " + soma;
+        document.getElementById("valorSomaMenores_resposta").innerHTML = resposta;
+    }
+
+    // Questão 8
+    function numerosImparesAteValor() {
+        var valor = parseInt(document.getElementById("valorImparesAte").value);
+        var resposta = "Resposta: ";
+        for (var i = 1; i <= valor; i += 2) {
+            resposta += i + " ";
+        }
+        document.getElementById("valorImparesAte_resposta").innerHTML = resposta;
+    }
+
+    // Questão 9
+    function somaMenorQue30() {
+        var numerosString = document.getElementById("numerosMenor30").value;
+        var numerosArray = numerosString.split("-").map(Number);
+        var soma = 0;
+        var resposta = "Resposta: ";
+        for (var i = 0; i < numerosArray.length; i++) {
+            if (numerosArray[i] < 30) {
+                soma += numerosArray[i];
+            }
+        }
+        resposta += "A soma dos números menores que 30 é " + soma;
+        document.getElementById("numerosMenor30_resposta").innerHTML = resposta;
+    }
+
+    // Questão 10
+    function contarMaioresQue50() {
+        var numerosString = document.getElementById("numerosMaiores50").value;
+        var numerosArray = numerosString.split("/").map(Number);
+        var count = 0;
+        var resposta = "Resposta: ";
+        for (var i = 0; i < numerosArray.length; i++) {
+            if (numerosArray[i] > 50) {
+                count++;
+            }
+        }
+        resposta += "Quantidade de números maiores que 50: " + count;
+        document.getElementById("numerosMaiores50_resposta").innerHTML = resposta;
+    }
+
+    // Questão 11
+    function inverterString() {
+        var inputString = document.getElementById("stringParaInverter").value;
+        var resultado = "Resposta: ";
+        for (var i = inputString.length - 1; i >= 0; i--) {
+            resultado += inputString[i];
+        }
+        document.getElementById("stringParaInverter_resposta").innerHTML = resultado;
+    }
+
+    // Questão 12
+    function primeiraUltimaMaiusculas() {
+        var inputString = document.getElementById("stringParaMaiusculas").value;
+        var resultado = "Resposta: " + inputString.charAt(0).toUpperCase() + inputString.slice(1, -1) + inputString.slice(-1).toUpperCase();
+        document.getElementById("stringParaMaiusculas_resposta").innerHTML = resultado;
+    }
+</script>
+
+<!-- Formulário para entrada de dados -->
+<form>
+    <fieldset>
+        <h1>Questão 01</h1>
+        <label for="numero1">Digite um número inteiro:</label>
+        <input type="text" id="numero1">
+        <button type="button" onclick="verificarParOuImpar()">Verificar Par ou Ímpar</button>
+        <button type="button" onclick="limparResposta('numero1')">Limpar</button>
+        <p id="numero1_resposta"></p>
+
+        <h1>Questão 02</h1>
+        <label for="numero2a">Digite o primeiro número inteiro:</label>
+        <input type="text" id="numero2a">
+        <label for="numero2b">Digite o segundo número inteiro:</label>
+        <input type="text" id="numero2b">
+        <button type="button" onclick="verificarMaior()">Verificar Maior</button>
+        <button type="button" onclick="limparResposta('numero2')">Limpar</button>
+        <p id="numero2_resposta"></p>
+
+        <h1>Questão 03</h1>
+        <label for="anoNascimento">Digite o ano de nascimento:</label>
+        <input type="text" id="anoNascimento">
+        <button type="button" onclick="verificarVotacao()">Verificar Votação</button>
+        <button type="button" onclick="limparResposta('anoNascimento')">Limpar</button>
+        <p id="anoNascimento_resposta"></p>
+
+        <h1>Questão 04</h1>
+        <label for="salarioAtual">Digite o salário atual:</label>
+        <input type="text" id="salarioAtual">
+        <label for="percentualReajuste">Digite o percentual de reajuste:</label>
+        <input type="text" id="percentualReajuste">
+        <button type="button" onclick="calcularNovoSalario()">Calcular Novo Salário</button>
+        <button type="button" onclick="limparResposta('salarioAtual')">Limpar</button>
+        <p id="salarioAtual_resposta"></p>
+
+        <h1>Questão 05</h1>
+        <label for="numeroDia">Digite um número de 1 a 7:</label>
+        <input type="text" id="numeroDia">
+        <button type="button" onclick="diaDaSemana()">Verificar Dia da Semana</button>
+        <button type="button" onclick="limparResposta('numeroDia')">Limpar</button>
+        <p id="numeroDia_resposta"></p>
+
+        <h1>Questão 06</h1>
+        <label for="valorNumerosAte">Digite um número inteiro positivo:</label>
+        <input type="text" id="valorNumerosAte">
+        <button type="button" onclick="numerosAteValor()">Mostrar Números até o Valor</button>
+        <button type="button" onclick="limparResposta('valorNumerosAte')">Limpar</button>
+        <p id="valorNumerosAte_resposta"></p>
+
+        <h1>Questão 07</h1>
+        <label for="valorSomaMenores">Digite um número inteiro positivo:</label>
+        <input type="text" id="valorSomaMenores">
+        <button type="button" onclick="somaNumerosMenores()">Mostrar Soma dos Menores</button>
+        <button type="button" onclick="limparResposta('valorSomaMenores')">Limpar</button>
+        <p id="valorSomaMenores_resposta"></p>
+
+        <h1>Questão 08</h1>
+        <label for="valorImparesAte">Digite um número inteiro positivo:</label>
+        <input type="text" id="valorImparesAte">
+        <button type="button" onclick="numerosImparesAteValor()">Mostrar Números Ímpares até o Valor</button>
+        <button type="button" onclick="limparResposta('valorImparesAte')">Limpar</button>
+        <p id="valorImparesAte_resposta"></p>
+
+        <h1>Questão 09</h1>
+        <label for="numerosMenor30">Digite 5 números separados por "-":</label>
+        <input type="text" id="numerosMenor30">
+        <button type="button" onclick="somaMenorQue30()">Mostrar Soma dos Menores que 30</button>
+        <button type="button" onclick="limparResposta('numerosMenor30')">Limpar</button>
+        <p id="numerosMenor30_resposta"></p>
+
+        <h1>Questão 10</h1>
+        <label for="numerosMaiores50">Digite 5 números separados por "/":</label>
+        <input type="text" id="numerosMaiores50">
+        <button type="button" onclick="contarMaioresQue50()">Contar Números Maiores que 50</button>
+        <button type="button" onclick="limparResposta('numerosMaiores50')">Limpar</button>
+        <p id="numerosMaiores50_resposta"></p>
+
+        <h1>Questão 11</h1>
+        <label for="stringParaInverter">Digite uma string:</label>
+        <input type="text" id="stringParaInverter">
+        <button type="button" onclick="inverterString()">Inverter String</button>
+        <button type="button" onclick="limparResposta('stringParaInverter')">Limpar</button>
+        <p id="stringParaInverter_resposta"></p>
+
+        <h1>Questão 12</h1>
+        <label for="stringParaMaiusculas">Digite uma string:</label>
+        <input type="text" id="stringParaMaiusculas">
+        <button type="button" onclick="primeiraUltimaMaiusculas()">Primeira e Última Letra em Maiúsculas</button>
+        <button type="button" onclick="limparResposta('stringParaMaiusculas')">Limpar</button>
+        <p id="stringParaMaiusculas_resposta"></p>
+    </fieldset>
+</form>
+
+</body>
+</html>
